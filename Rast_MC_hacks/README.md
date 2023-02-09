@@ -1,4 +1,4 @@
-# Fabric Example Mod
+# Custom Client Hacks by Rastislonge
 
 ## Setup
 
