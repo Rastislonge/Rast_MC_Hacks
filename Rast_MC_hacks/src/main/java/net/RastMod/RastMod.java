@@ -6,32 +6,40 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.api.ClientModInitializer;
 
 public class RastMod implements ModInitializer, ClientModInitializer{
-    private net.RastMod.hacks.BoatFly boatfly;
+    private net.RastMod.hacks.BoatFly boatFly;
     private net.RastMod.hacks.AddedVelocity addedvelocity;
-    private net.RastMod.hacks.HeadShakeNo headno ;
-    private net.RastMod.hacks.HeadFlipper headflip ;
+    private net.RastMod.hacks.HeadShakeNo headNo ;
+    private net.RastMod.hacks.HeadFlipper headFlipper ;
+    private net.RastMod.hacks.Flying flying ;
+    private net.RastMod.hacks.AutoFarming autoFarming ;
     private static RastMod instance;
     @Override
     public void onInitialize() {
         if (instance == null) instance = this;
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
-        this.boatfly = new net.RastMod.hacks.BoatFly();
+        this.boatFly = new net.RastMod.hacks.BoatFly();
         this.addedvelocity = new net.RastMod.hacks.AddedVelocity();
-        this.headno = new net.RastMod.hacks.HeadShakeNo();
-        this.headflip = new net.RastMod.hacks.HeadFlipper();
+        this.headNo = new net.RastMod.hacks.HeadShakeNo();
+        this.headFlipper = new net.RastMod.hacks.HeadFlipper();
+        //this.flying = new net.RastMod.hacks.Flying();
+        this.autoFarming = new net.RastMod.hacks.AutoFarming();
     }
     public void onInitializeClient() {
         if (instance == null) instance = this;
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
-        this.boatfly = new net.RastMod.hacks.BoatFly();
+        this.boatFly = new net.RastMod.hacks.BoatFly();
         this.addedvelocity = new net.RastMod.hacks.AddedVelocity();
-        this.headno = new net.RastMod.hacks.HeadShakeNo();
-        this.headflip = new net.RastMod.hacks.HeadFlipper();
+        this.headNo = new net.RastMod.hacks.HeadShakeNo();
+        this.headFlipper = new net.RastMod.hacks.HeadFlipper();
+        //this.flying = new net.RastMod.hacks.Flying();
+        this.autoFarming = new net.RastMod.hacks.AutoFarming();
     }
     public void tick(MinecraftClient client) {
-        boatfly.tick(client);
+        boatFly.tick(client);
         addedvelocity.tick(client);
-        headno.tick(client);
-        headflip.tick(client);
+        headNo.tick(client);
+        headFlipper.tick(client);
+        //flying.tick(client);
+        autoFarming.tick(client);
     }
 }
